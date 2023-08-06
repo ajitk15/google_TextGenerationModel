@@ -1,22 +1,12 @@
 """
-pip install google-cloud-aiplatform
-
-- Passing a constructor argument
-- Using aiplatform.init()
-- Setting project using 'gcloud config set project my-project'
-- Setting a GCP environment variable
+pip install google-cloud-aiplatform --upgrade --user
+set environment variable to gcp service account json file 
+set GOOGLE_APPLICATION_CREDENTIALS=C://project/service_account.json
 """
-
-
-import vertexai
-import markdown
-from vertexai.preview.language_models import TextGenerationModel
-
+#from IPython.display import Markdown, display
+from vertexai.language_models import TextGenerationModel 
 
 generation_model = TextGenerationModel.from_pretrained("text-bison@001")
-
-promt = "List top 5 City names in India"
-
-response = generation_model(promt)
-
+prompt = "List top 5 cities in India"
+response = generation_model.predict(prompt=prompt)
 print(response.text)
